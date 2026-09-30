@@ -36,6 +36,7 @@
   <main id="conteudo">
     <section class="hero" id="inicio" aria-labelledby="hero-title">
       <div class="hero-image" aria-hidden="true"></div>
+      <div class="hero-logo" aria-hidden="true"></div>
       <div class="hero-grain" aria-hidden="true"></div>
       <div class="container hero-content">
         <div class="eyebrow"><span class="line"></span> SEU PRÓXIMO PASSO COMEÇA AQUI</div>
@@ -99,6 +100,16 @@
         <div class="plan-grid">
           <article class="price-card"><div class="price-top"><span>CONSULTORIA ONLINE</span><span class="plan-pill">40 DIAS</span></div><h3>Seu compromisso com você.</h3><div class="price"><span>R$</span><strong>85</strong><div>,00<small>por 40 dias de acompanhamento</small></div></div><p class="price-description">Um plano de treino feito para a sua realidade.</p><ul class="included"><li><svg><use href="#check"/></svg>Treino 100% personalizado</li><li><svg><use href="#check"/></svg>Acompanhamento e avaliações pelo app</li><li><svg><use href="#check"/></svg>Vídeos dos exercícios</li><li><svg><use href="#check"/></svg>Suporte para dúvidas sobre o treino</li><li><svg><use href="#check"/></svg>Ajustes conforme o acompanhamento</li></ul><div class="price-foot"><svg><use href="#spark"/></svg> Clareza para começar. Direção para continuar.</div></article>
           <div class="contact-card" id="contato"><div class="eyebrow">VAMOS COMEÇAR POR VOCÊ</div><h3>Qual é o seu foco?</h3><p>Preencha uma triagem rápida. O site prepara um resumo e abre seu WhatsApp com a mensagem pronta para enviar.</p><form id="interest-form">
+            <fieldset class="form-section"><legend>Sobre você</legend>
+              <label class="field-label" for="student-name">Qual é o seu nome?</label>
+              <input class="text-field" id="student-name" name="studentName" type="text" maxlength="50" autocomplete="name" required aria-describedby="name-counter">
+              <div class="char-counter" id="name-counter"><span id="name-count">0</span>/50 caracteres</div>
+              <label class="field-label" for="student-age">Qual é a sua idade?</label>
+              <input class="text-field" id="student-age" name="studentAge" type="text" inputmode="numeric" pattern="[0-9]{1,3}" maxlength="3" required>
+              <label class="field-label" for="referral">Como você conheceu a P.S. TEAM?</label>
+              <input class="text-field" id="referral" name="referral" type="text" maxlength="50" required aria-describedby="referral-counter">
+              <div class="char-counter" id="referral-counter"><span id="referral-count">0</span>/50 caracteres</div>
+            </fieldset>
             <fieldset class="form-section"><legend>Seu objetivo principal</legend><div class="goal-grid"><label class="goal"><input type="radio" name="goal" value="Hipertrofia" checked><svg><use href="#weight"/></svg><span>Hipertrofia<small>Construir massa muscular</small></span><span class="radio-mark"></span></label><label class="goal"><input type="radio" name="goal" value="Emagrecimento"><svg><use href="#spark"/></svg><span>Emagrecimento<small>Treinar com esse foco</small></span><span class="radio-mark"></span></label><label class="goal"><input type="radio" name="goal" value="Força e performance"><svg><use href="#target"/></svg><span>Força e performance<small>Ir além no treino</small></span><span class="radio-mark"></span></label><label class="goal"><input type="radio" name="goal" value="Começar ou retomar"><svg><use href="#arrow"/></svg><span>Começar ou retomar<small>Criar uma rotina de treino</small></span><span class="radio-mark"></span></label></div></fieldset>
             <fieldset class="form-section"><legend>Dados para individualizar o treino</legend><div class="form-grid">
               <label class="field-label" for="weight">Peso atual</label><div class="select-wrap"><select id="weight" name="weight"><option value="Prefiro informar no WhatsApp">Prefiro informar no WhatsApp</option><option value="Até 60 kg">Até 60 kg</option><option value="61 a 70 kg">61 a 70 kg</option><option value="71 a 80 kg">71 a 80 kg</option><option value="81 a 90 kg">81 a 90 kg</option><option value="91 a 100 kg">91 a 100 kg</option><option value="101 a 110 kg">101 a 110 kg</option><option value="111 a 120 kg">111 a 120 kg</option><option value="121 kg ou mais">121 kg ou mais</option></select><span>⌄</span></div>
@@ -120,3 +131,4 @@
   <dialog id="summary-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><span class="eyebrow">SEU PRIMEIRO PASSO</span><button id="close-dialog" class="close-dialog" aria-label="Fechar resumo">×</button></div><h2 id="dialog-title">VAMOS CONVERSAR<br><span>SOBRE SEU TREINO.</span></h2><p>Sua mensagem está pronta. Revise, copie se quiser, e abra o WhatsApp da P.S. TEAM.</p><label for="summary-text" class="field-label">Mensagem preparada</label><textarea id="summary-text" readonly rows="9"></textarea><button id="copy-summary" class="button"><svg><use href="#copy"/></svg> Copiar mensagem</button><a id="whatsapp-link" class="button whatsapp-button" target="_blank" rel="noopener noreferrer"><svg><use href="#chat"/></svg> Abrir WhatsApp da P.S. TEAM</a><p class="dialog-note">Preparar ou copiar a mensagem não envia nada automaticamente e não realiza contratação.</p><p id="copy-status" class="copy-status" role="status" aria-live="polite"></p></dialog>
 </body>
 </html>
+

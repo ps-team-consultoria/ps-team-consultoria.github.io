@@ -42,6 +42,15 @@ const injuryDetails = document.querySelector('#injury-details');
 const detailsCount = document.querySelector('#details-count');
 const whatsappLink = document.querySelector('#whatsapp-link');
 let previousFocus;
+const studentAge = document.querySelector('#student-age');
+studentAge.addEventListener('input', () => { studentAge.value = studentAge.value.replace(/[^0-9]/g, '').slice(0, 3); });
+[['student-name', 'name-count'], ['referral', 'referral-count']].forEach(([id, counter]) => {
+  const input = document.getElementById(id);
+  input.addEventListener('input', () => {
+    document.getElementById(counter).textContent = String(input.value.length);
+    input.setCustomValidity(input.value.trim() ? '' : 'Preencha este campo.');
+  });
+});
 
 function fillInjuryOptions(region) {
   injuryType.innerHTML = '';
@@ -64,7 +73,11 @@ injuryDetails.addEventListener('input', updateDetailsCount);
 
 form.addEventListener('submit', event => {
   event.preventDefault();
+  if (!form.reportValidity()) return;
   const data = new FormData(form);
+  const studentName = String(data.get('studentName')).trim();
+  const age = data.get('studentAge');
+  const referral = String(data.get('referral')).trim();
   const goal = data.get('goal');
   const weight = data.get('weight');
   const height = data.get('height');
@@ -75,7 +88,7 @@ form.addEventListener('submit', event => {
   const injurySummary = region === 'Nenhuma lesão informada'
     ? 'Nenhuma lesão informada.'
     : `${region} — ${injury}.${details ? `\nDetalhes: ${details}` : ''}`;
-  summaryText.value = `Olá, P.S. TEAM! Tenho interesse na consultoria online.\n\nObjetivo principal: ${goal}.\nPeso atual: ${weight}.\nAltura: ${height}.\nFrequência desejada: ${frequency}.\nLesão, dor ou limitação: ${injurySummary}\nPlano de interesse: R$85,00 por 40 dias de acompanhamento.\n\nGostaria de saber como começar!`;
+  summaryText.value = `Olá, P.S. TEAM! Tenho interesse na consultoria online.\n\nNome: ${studentName}.\nIdade: ${age} anos.\nComo conheceu a P.S. TEAM: ${referral}.\n\nObjetivo principal: ${goal}.\nPeso atual: ${weight}.\nAltura: ${height}.\nFrequência desejada: ${frequency}.\nLesão, dor ou limitação: ${injurySummary}\nPlano de interesse: R$85,00 por 40 dias de acompanhamento.\n\nGostaria de saber como começar!`;
   copyStatus.textContent = '';
   const validNumber = /^\d{10,15}$/.test(BUSINESS_WHATSAPP);
   if (validNumber) whatsappLink.href = `https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(summaryText.value)}`;
@@ -105,3 +118,4 @@ document.querySelector('#copy-summary').addEventListener('click', async () => {
     copyStatus.textContent = 'Selecione e copie o texto acima usando a opção Copiar do seu aparelho.';
   }
 });
+
